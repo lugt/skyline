@@ -1,0 +1,129 @@
+        <div class="wrap">
+            <script src="laydate/laydate.js" type="text/javascript">
+</script>
+            <div class="nav">
+                <ul class="cc">
+                    <li class="current">
+                        <a href="index.php?goto=leave&a=single">订阅</a>
+                    </li>
+                </ul>
+            </div>
+            <form method="post" class="J_ajaxForm" action="index.php?cast=leave" style="background:#eee;">
+                <!--div class="h_a" style="background:#fff;height:40px;border: 3px solid;margin-bottom:10px;">
+                	<h3>订户订阅列表</h3>
+                </div-->
+                <div class="table_full">
+                    <table width="100%">
+                        <colgroup>
+                            <col class="th">
+                            <col width="500">
+                   
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    预约课程
+                                </th>
+                                <td>
+                                    <input name="na" id="nasm" type="radio" class="input" value="Arduino 精品课程" checked="checked"/>
+                                    <label for="na">Arduino 精品课程</label>
+                                    <input name="na" id="xa" type="radio" class="input" value="Exalt 创新英语" />
+                                    <label for="xa">Exalt 创新英语</label>
+                                </td>
+                                <td>
+                                    <div class="fun_tips">
+                                        可以填写您上次课的内容
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    预约服务小二
+                                </th>
+                                <td>
+                                    <select name="cl1" class="">
+                                        <option value="1">
+                                            闲鱼
+                                        </option>
+                                    </select><select name="cl2">
+                                        <option value="1">
+                                    		1号小二
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    预约时间段
+                                </th>
+                                <td>
+                                    <input name="st" type="text" onclick="laydate({istime:false,format:'YYYY-MM-DD'})" placeholder="日期" class="laydate-ic input" id="sta">    
+                                    
+                                </td>
+                                <td>
+                                <select name="en">
+                                    	<option value="1">上午</option>
+                                    	<option value="2">下午</option>
+                                    	<option value="3">晚间</option>
+                                    	<option value="4">特定（备注）</option>
+                                 </select>  
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    联系方式
+                                </th>
+                                <td>
+                                    <select name="re" class="select_5">
+                                    	<option value="s3">QQ语音（推荐）</option>
+                                    	<option value="s1">世界</option>
+                                    	<option value="s2">Skype</option>
+                                    	<option value="s4">YY/QTalk</option>
+                                    	<option value="s5">其他(备注)</option>
+                                    </select>
+                                     </td>
+                                     
+                                <td>
+                                    
+                                    <input name="po" type="text" class="input" id="position" placeholder="具体信息-QQ号等">
+                                </td>
+                            </tr>
+                            
+                                  <tr>
+                                <th>
+                                    申请用户
+                                </th>
+                                <td>
+                                    <input name="spl" type="text" readonly class="input length_5" value="<?php echo $_SESSION['name'];?>">
+                                </td>
+                                <td>
+                                    <div class="fun_tips" style="color:#f33;">
+                                        请确认上述信息正确
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    备注
+                                </th>
+                                <td>
+                                    <textarea name="me" style="height:40px;width:300px;"></textarea>
+                                </td>
+                                <td>
+                                    <div class="fun_tips">
+                                        请输入特定时间、联系方式、预约信息，以及其他特殊情况
+                                    </div>
+                                </td>
+                            </tr>
+                      
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn_wrap" style="bottom:100px; position:inherit;">
+                    <div class="btn_wrap_pd">
+                        <button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        

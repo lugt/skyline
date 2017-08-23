@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)https://sc.imp.live.com/content/dam/imp/surfaces/mail_signin/v3/mai/ZH-CN.html?id=64855&mkt=ZH-CN&cbcxt=mai -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <title>登录</title>  <style>
+			body {
+				background-color: #f4f4f4;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+        
+		<script src="three.min.js"></script>   <link rel="stylesheet" type="text/css" href="style.css?ver=2"><!--script type="text/javascript" src="mbox.js"></script--></head>
+        <body dir="ltr" class="standard small ltr zh-cn" marginwidth="0" marginheight="0">
+         <div id="mboxDefault" class="mboxDefault" style="position:absolute;z-index:-2;visibility: visible;top:0px; display: block;"><div id="offer" class="normal account" style="color:#454545;">
+   <div class="logo-null" id="logo-nulls"></div>
+    <div id="text" class="logo-ss" style="background-Color:#bad80a;">
+         <h1>连接您的所有帐户</h1>
+         <p>只需一个Nim账户， Wiki，Wind Bangpai....所有功能，一次打尽</p>
+         <!--a id="button" href="http://niimei.com/uc.php" target="_blank">了解详情</a-->
+    </div>
+</div>
+    <!--<img id="hero" src="sweep_ps_zh-cn.jpg">-->
+   <script>
+   	var container;
+	var camera, scene, projector, renderer;
+
+			var PI2 = Math.PI * 2;
+
+			var programFill = function ( context ) {
+
+				context.beginPath();
+				context.arc( 0, 0, 1, 0, PI2, true );
+				context.closePath();
+				context.fill();
+
+			}
+
+			var programStroke = function ( context ) {
+
+				context.lineWidth = 0.05;
+				context.beginPath();
+				context.arc( 0, 0, 1, 0, PI2, true );
+				context.closePath();
+				context.stroke();
+
+			}
+
+			var mouse = { x: 0, y: 0 }, INTERSECTED;
+
+			init();
+			animate();
+			
+			var radius = 100;
+			var theta = 0;
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				container.id = 'bgc';
+				container.style.position = 'relative';
+				container.style.zIndex = '0';
+				document.getElementById('logo-nulls').appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 70, 0.88, 1, 500 );
+				camera.position.set( 0, 250, 250 );
+
+				scene = new THREE.Scene();
+
+				for ( var i = 0; i < 100; i ++ ) {
+
+					var particle = new THREE.Particle( new THREE.ParticleCanvasMaterial( { color: Math.random() * 0x808080 + 0x808080, program: programStroke } ) );
+					particle.position.x = Math.random() * 800 - 400;
+					particle.position.y = Math.random() * 800 - 400;
+					particle.position.z = Math.random() * 800 - 400;
+					particle.scale.x = particle.scale.y = Math.random() * 10 + 10;
+					scene.add( particle );
+
+				}
+
+				projector = new THREE.Projector();
+
+				renderer = new THREE.CanvasRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				container.appendChild( renderer.domElement );
+
+
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			
+			function onWindowResize() {
+
+				camera.aspect = 490 / 350; 
+				//window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( 490, 350 );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				event.preventDefault();
+
+				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+
+			}
+
+
+			function render() {
+
+				// rotate camera
+
+				theta += 0.2;
+
+				camera.position.x = radius * Math.sin( theta * Math.PI / 360 );
+				camera.position.y = radius * Math.sin( theta * Math.PI / 360 );
+				camera.position.z = radius * Math.cos( theta * Math.PI / 360 );
+				camera.lookAt( scene.position );
+
+				// find intersections
+
+				camera.updateMatrixWorld();
+
+				var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
+				projector.unprojectVector( vector, camera );
+
+				var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
+
+				var intersects = ray.intersectObjects( scene.children );
+
+				if ( intersects.length > 0 ) {
+
+					if ( INTERSECTED != intersects[ 0 ].object ) {
+
+						if ( INTERSECTED ) INTERSECTED.material.program = programStroke;
+
+						INTERSECTED = intersects[ 0 ].object;
+						INTERSECTED.material.program = programFill;
+
+					}
+
+				} else {
+
+					if ( INTERSECTED ) INTERSECTED.material.program = programStroke;
+
+					INTERSECTED = null;
+
+				}
+
+				renderer.render( scene, camera );
+				
+			}
+   setTimeout(300,onWindowResize);
+		</script>
+      
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="style_win8.css">
+</div><div id="mboxMarker-default-PROD-outlook_signin-0" style="visibility:hidden;display:none">&nbsp;</div>
+</div>
+</body></html>

@@ -1,0 +1,239 @@
+<?php
+
+function search_answer($s){
+?>
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://niimei.com/wind/admin.php?m=bbs&c=article&a=searchthread -->
+<html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<link href="./home_files/admin_style.css" rel="stylesheet">
+<script>
+var GV = {
+	JS_ROOT : "./home_files/",																									//js目录
+	JS_VERSION : "20130227",																										//js版本号
+	TOKEN : '84d90defd6ee4d83',	//token ajax全局
+	REGION_CONFIG : {},
+	SCHOOL_CONFIG : {},
+	URL : {
+		LOGIN : '',																													//后台登录地址
+		IMAGE_RES: './home_files/',																										//图片目录
+		REGION : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=area',					//地区
+		SCHOOL : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=school'				//学校
+	}
+};
+</script>
+<script src="./home_files/wind.js"></script>
+<script src="./home_files/jquery.js"></script>
+<script type="text/javascript" src="./home_files/dialog.js"></script>
+<!--script type="text/javascript" src="./home_files/ajaxForm.js"></script-->
+<script type="text/javascript" src="./home_files/datePicker.js"></script>
+<!--script type="text/javascript" src="./home_files/draggable.js"></script-->
+<link rel="stylesheet" href="./act/search_result_files/style.css">
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="#">现有预约信息</a></li>
+			<li></li>
+		</ul>
+	</div>
+	<input type="hidden" name="csrf_token" value="84d90defd6ee4d83"></form>
+	<div class="J_ajaxForm">
+						<div class="table_list">
+			<table width="100%">
+				<colgroup>
+					<col width="70">
+					<col width="120">
+					<col width="170"> 
+					<col width="130">
+				</colgroup>
+				<thead>
+					<tr>
+						<!--<label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x">全选</label>-->
+						<td>详情</td>
+						<td>时间</td>
+						<td>小二</td>
+						<td>课程</td>
+						<td>状态</td>
+						<td><span>申请用户</span></td>
+						<td>确认</td>
+						<td>联系方式</td>
+						<td>具体</td>
+					</tr>
+				</thead>
+					<tbody>
+				<?php
+				foreach($s as $now){
+				?>
+				<tr height="50">
+					<!--<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="tids[]" value="8"></td>-->
+					<td><a href="index.php?cast=detail&leave=<?php echo $now->id;?>">查看</a></td>
+					<td><?php date_default_timezone_set('PRC'); 
+						if(strtotime("13:00",$now->st) == $now->st){
+								// 中午
+								echo date("m-d",$now->st)."日上午";
+						}else if(strtotime("18:40",$now->st) == $now->st){
+							// 同一天
+								echo date("m-d",$now->st)."日下午";
+						}else if(strtotime("10:00",$now->st) == $now->st){
+								echo date("m-d",$now->st)."日晚间";
+						}else{
+							echo date("m-d日H:i:s",$now->st)." - ".date("m-d日H:i:s",$now->en);
+						}
+						 ?>
+						</td>	
+					<td><a href="index.php?cast=inquire&classn=<?php echo $now->cl; ?>"><?php echo translate_cl($now->cl); ?></a></td>					
+					<td><?php echo $now->na; ?></td>
+					<td><?php echo transtate($now->sa);?></td>
+					<td>
+						<?php echo trans_te($now->ap,$now);?>
+					</td>
+					<td><?php echo translate_au($now->ex,$now);?></td>
+					<td><?php echo trans_re($now->re);?> </td>
+					<td><?php echo $now->po;?> </td>
+				</tr>
+				<?php
+				}
+				?>
+							</tbody></table>
+			<div class="p10">
+							</div>
+		</div>
+						<div class="">
+			<div class="btn_wrap_pd">
+				<div class="select_pages">
+					<a href="#">20</a><span>|</span>
+					<a href="#">50</a><span>|</span>
+					<a href="#">100</a>
+				</div>
+				<label class="mr20"><input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y">全选</label>
+				<button class="btn J_ajax_submit_btn" onclick="history.go(-1)">返回</button>
+				<a class="btn btn_submit J_ajax_submit_btn" data-action="" href='index.php?cast=inquire&class=<?php echo $GLOBALS['class'];?>&time=<?php echo $GLOBALS['time'];?>';">刷新</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script src="./home_files/common.js"></script>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="calroot" style="display: none; position: absolute;">
+            <div id="calhead">
+                <a id="calprev"></a>
+                <div id="caltitle">
+                    <select id="calmonth">
+                        </select> <select id="calyear">
+                        </select>
+                </div><a id="calnext"></a>
+            </div>
+            <div id="calbody">
+                <div id="caldays">
+                    <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                </div>
+                <div id="calweeks"></div>
+                <div class="caltime">
+                    <button type="button" class="btn btn_submit fr" name="submit">确定</button><input id="calHour" type="number" class="input" min="0" max="23" size="2" value="0"><span>点</span><input id="calMin" class="input" type="number" size="2" min="1" max="59" value="0"><span>分</span>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
+		</body></html>
+	
+<?php
+}
+
+function translate_cl($cl){
+	if($cl < 10){
+			$p = "小二";
+	}else if($cl < 50){
+			$p = "闲鱼";
+	}else{
+			$p = "小二";	
+	}
+	$p .= " ".($cl % 10) . " 号";
+	return $p;	
+}
+
+function translate_au($t,$lfo){
+	if($t == 0){
+		return "<a href=\"index.php?cast=auth&leave=".$lfo->id."\">点击确认</a>";
+	}
+	$tei = new Teach_Info();
+	$tei->load();
+	$an = $tei->getname($t);
+	$ar = $tei->gettitle($t);
+	if($an == NULL || $an == FALSE){
+		return "小二";
+	}else{
+		return "<a href='index.php?cast=teacher&a=".$t."'>".$ar." ".$an."</a>";
+	}
+}
+function trans_te($t,$lfo){
+	$tei = new Teach_Info();
+	$tei->load();
+	$an = $tei->getname($t);
+	$ar = $tei->gettitle($t);
+	if($an == NULL || $an == FALSE){
+		return "其他用户";
+	}else{
+		return "<a href='index.php?cast=teacher&a=".$t."'>".$ar." ".$an."</a>";
+	}
+}
+
+function trans_re($re){
+	switch($re){
+  		case "s3":
+  			$sre = "QQ";	
+  			break;
+  		case "s1":
+ 		  	$sre = "世界";
+ 		  	break;
+  		case "s2":
+  			$sre = "Skype";
+  			break;
+  		case "s4":
+  			$sre = "YY";	
+  			break;
+  		case "s5":
+  			$sre = "其他";
+  			break;
+  		case "s6":
+  			$sre = "其他";
+  			break;
+  		default:
+  			$sre =$re;
+  	}
+  	return $sre;
+	
+	}
+	
+function transtate($c){
+	if($c == 2000){
+		return "已过期";
+	} else if ($c == 800){
+		return "确认超时";
+	} else if ($c == 100){
+		return "<span style=\"color:#aa3;\">等待确认</span>";
+	} else if ($c == 300){
+		return "<span style=\"color:#393;\">已审核</span>";
+	} else if ($c == 400){
+		return "<span style=\"color:#f33;\">预约驳回</span>";
+	} else if ($c == 500){
+		return "<span style=\"color:#f33;\">预约失效</span>";
+	} else if ($c == 600){
+		return "<span style=\"color:#f33;\">预约取消</span>";
+	}	else {
+		return "<span style=\"color:#f33;\">预约出错</span>";	
+	}
+}
+
+
+?>

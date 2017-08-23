@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://niimei.com/wind/admin.php?m=bbs&c=article&a=threadadvanced -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<link href="admin_style.css" rel="stylesheet">
+<script>
+//全局变量，是Global Variables不是Gay Video喔
+var GV = {
+	JS_ROOT : "http://niimei.com/wind/res/js/dev/",																									//js目录
+	JS_VERSION : "20130227",																										//js版本号
+	TOKEN : '84d90defd6ee4d83',	//token ajax全局
+	REGION_CONFIG : {},
+	SCHOOL_CONFIG : {},
+	URL : {
+		LOGIN : '',																													//后台登录地址
+		IMAGE_RES: 'http://niimei.com/wind/res/images',																										//图片目录
+		REGION : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=area',					//地区
+		SCHOOL : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=school'				//学校
+	}
+};
+</script>
+<script src="wind.js"></script>
+<script src="jquery.js"></script><script type="text/javascript" src="datePicker.js"></script><script type="text/javascript" src="ajaxForm.js"></script>
+
+<link rel="stylesheet" href="style.css"></head>
+<body style="width:450px" class="body_none">
+<!--高级管理弹窗-->
+		<div class="pop_advanced_search">
+		<form id="J_threadadvanced_form" method="post" action="http://niimei.com/wind/admin.php?m=bbs&amp;c=article&amp;a=searchThread">
+			<div class="pop_cont">
+				<ul class="cc">
+					<li>
+						<p>关键字：</p>
+						<input type="text" name="keyword" value="" class="input length_3" placeholder="支持帖子标题和正文搜索">
+					</li>
+					<li>
+						<p>根据IP查找：</p>
+						<input type="text" name="created_ip" value="" class="input length_3">
+					</li>
+					<li>
+						<p>作者：</p>
+						<input type="text" name="created_username" value="" class="input length_3">
+					</li>
+					<li>
+						<p>UID：</p>
+						<input type="text" name="created_userid" value="" class="input length_3">
+					</li>
+					<li class="all">
+						<p>主题发布时间：</p>
+						<input type="text" name="time_start" value="" class="input length_3 J_date date"><span class="gap">至</span><input type="text" name="time_end" value="" class="input length_3 J_date date">
+					</li>
+					<li class="all">
+						<p>主题浏览人数：</p>
+						<input type="text" name="hits_start" value="" class="input length_3"><span class="gap">至</span><input type="text" name="hits_end" value="" class="input length_3">
+					</li>
+					<li class="all">
+						<p>主题回复人数：</p>
+						<input type="text" name="replies_start" value="" class="input length_3"><span class="gap">至</span><input type="text" name="replies_end" value="" class="input length_3">
+					</li>
+					<li>
+						<p>所属版块：</p>
+						<select name="fid" class="select_3"><option value="0">所有版块</option><option value="24">&gt;&gt; 帮助中心</option><option value="25"> &nbsp;|- 建议区</option><option value="27"> &nbsp; &nbsp;|-  全站</option><option value="28"> &nbsp; &nbsp;|-  Wind 讨论</option><option value="29"> &nbsp; &nbsp;|-  Share 分享</option><option value="30"> &nbsp; &nbsp;|-  Matrix 点点</option><option value="26"> &nbsp; &nbsp;|-  Game 游戏</option><option value="4">&gt;&gt; 新鲜事</option><option value="8"> &nbsp;|- 新闻趣致</option><option value="9"> &nbsp;|- 每日一笑</option><option value="5">&gt;&gt; 安排通知</option><option value="10"> &nbsp;|- 校园</option><option value="11"> &nbsp;|- 通知</option><option value="12">&gt;&gt; 游戏中心</option><option value="13"> &nbsp;|- 单机游戏</option><option value="14"> &nbsp;|- 火爆网游</option><option value="15"> &nbsp;|- 页游</option><option value="16">&gt;&gt; 影视中心</option><option value="17"> &nbsp;|- 英剧专题</option><option value="18"> &nbsp;|- 美剧专题</option><option value="19"> &nbsp;|- 电影点播</option><option value="3">&gt;&gt; 学习专区</option><option value="6"> &nbsp;|- 数学自选</option><option value="7"> &nbsp;|- 听力练习</option><option value="20">&gt;&gt; 音乐欣赏</option><option value="21"> &nbsp;|- 经典音乐</option><option value="22"> &nbsp;|- 小调</option><option value="23"> &nbsp;|- 电台</option></select>
+					</li>
+					<li style="display:none">
+						<p>&nbsp;</p>
+						<label><input type="checkbox" name="digest" value="1">过滤精华</label>
+					</li>
+				</ul>
+			</div>
+			<div class="pop_bottom">
+				<button class="btn fr" id="J_dialog_close" type="button">取消</button>
+				<button type="submit" class="btn btn_submit fr mr10" id="J_threadadvanced_btn">搜索</button>
+			</div>
+		<input type="hidden" name="csrf_token" value="84d90defd6ee4d83"></form>
+		</div>
+<!--结束-->
+<script src="common.js"></script>
+<script>
+Wind.use('ajaxForm', function(){
+	var keyword = $('input[name=keyword]');
+	$('#J_threadadvanced_btn').on('click', function(e){
+		e.preventDefault();
+
+		if($.browser.msie) {
+			//ie 清空placeholder
+			if(keyword.val() == keyword.attr('placeholder')) {
+				keyword.val('');
+			}
+		}
+
+		//序列化 写入url
+		parent.window.location.href = "http://niimei.com/wind/admin.php?m=bbs&c=article&a=searchthread" + '&' +$('#J_threadadvanced_form').formSerialize();
+	});
+});
+</script>
+
+<div id="calroot" style="display: none; position: absolute;"><div id="calhead"><a id="calprev"></a><div id="caltitle"><select id="calmonth"></select><select id="calyear"></select></div><a id="calnext"></a></div><div id="calbody"><div id="caldays"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div id="calweeks"></div><div class="caltime"><button type="button" class="btn btn_submit fr" name="submit">确定</button><input id="calHour" type="number" class="input" min="0" max="23" size="2" value="0"><span>点</span><input id="calMin" class="input" type="number" size="2" min="1" max="59" value="0"><span>分</span></div></div></div></body></html>

@@ -1,0 +1,124 @@
+        <div class="wrap">
+            <script src="laydate/laydate.js" type="text/javascript">
+</script>
+            <div class="nav">
+                <ul class="cc">
+                    <li class="current">
+                        <a href="index.php?goto=addcustom&a=single">添加客户</a>
+                    </li>
+                </ul>
+            </div>
+            <form method="post" class="J_ajaxForm" action="index.php?cast=regcustom" style="background:#eee;">
+                <!--div class="h_a" style="background:#fff;height:40px;border: 3px solid;margin-bottom:10px;">
+                	<h3>订户订阅列表</h3>
+                </div-->
+                <div class="table_full">
+                    <table width="100%">
+                        <colgroup>
+                            <col class="th">
+                            <col width="500">
+                   
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    创建客户记录
+                                </th>
+                                <td>
+                                    <input name="na" id="nasm" type="text" class="input" placeholder"客户姓名"/>
+                                </td>
+                                <td>
+                                    <div class="fun_tips">
+                                        可以填写集团名称
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    客户关系
+                                </th>
+                                <td>
+                                    <select name="rel" class="">
+                                        <option value="100">
+                                            初识客户
+                                        </option>
+                                        <option value="1000">
+                                            优质客户
+                                        </option>
+                                        <option value="1200">
+                                            关系客户
+                                        </option>
+                                        <option value="2000">
+                                            合同期内客户
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    上级客户
+                                </th>
+                                <td>
+                                    <input name="par" type="number" placeholder="客户代码 id" class="input">    
+                                    
+                                </td>
+                                <td>
+                                <select name="en">
+                                    	<option value="1">上午</option>
+                                    	<option value="2">下午</option>
+                                    	<option value="3">晚间</option>
+                                    	<option value="4">特定（备注）</option>
+                                 </select>  
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    联系方式
+                                </th>
+                                <td>
+									<input name="com" class="input" type="text"/>	
+                               </td>
+                                     
+                                <td>
+                                    QQ号码等具体信息
+                                </td>
+                            </tr>
+                            
+                                  <tr>
+                                <th>
+                                    申请用户
+                                </th>
+                                <td>
+                                    <input name="spl" type="text" readonly class="input length_5" value="<?php echo $_SESSION['name'];?>">
+                                </td>
+                                <td>
+                                    <div class="fun_tips" style="color:#f33;">
+                                        请确认上述信息正确
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    备注
+                                </th>
+                                <td>
+                                    <textarea name="memo" style="height:40px;width:300px;"></textarea>
+                                </td>
+                                <td>
+                                    <div class="fun_tips">
+                                        请输入特定时间、联系方式、预约信息，以及其他特殊情况
+                                    </div>
+                                </td>
+                            </tr>
+                      
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn_wrap" style="bottom:100px; position:inherit;">
+                    <div class="btn_wrap_pd">
+                        <button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        

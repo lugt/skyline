@@ -1,0 +1,80 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal;font-weight:normal; }
+table{border-collapse:collapse;border-spacing:0;}
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol,li{ list-style:none; }
+a{ text-decoration:none; }
+a:hover { }
+a img{border:0;display:block;}
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+fieldset{ border:none; }
+legend{display:none;}
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+textarea { resize:none; } 
+p{ text-align:justify; text-justify:distribute;word-wrap:break-word}
+
+.clearfix:after,.clearfix:before{display:table;content:"";}
+.clearfix:after{clear:both;}
+.clearfix{*zoom:1;}
+.of-ellipsis {overflow: hidden;text-overflow: ellipsis;vertical-align: top;white-space: nowrap;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+.tb {display: table;}
+.tl{text-align: left}
+.tc{text-align: center}
+.tr{text-align: right}
+.fl{float:left;display: inline;}
+.fr{float:right;display: inline;}
+.vm{vertical-align: middle;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.none{display: none;}
+.bc{margin:0 auto;}
+body{font-family: "Arial","SimHei";}
+.con980{width:980px;margin:0 auto;}
+.con1024{width:1024px;margin:0 auto;position: relative;}
+.bgG{background:#eaeaea;}
+.part01,.part02,.part03,.part04{height:600px;overflow: hidden;}
+.bar{height:25px;background: #eaeaea;border-bottom:1px solid #c3c3c3;}
+.logo{background: #fff;height:106px;overflow: hidden;}
+.logo h1{width:362px;height:0;padding-top:46px;background: url(http://img.rrmj.tv/static/down/logoIndex.png) no-repeat;overflow: hidden;margin-top:27px;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.bar02{height:48px;background: #222;}
+.part01{background: url(http://img.rrmj.tv/static/down/downbg.jpg) no-repeat center center;overflow: hidden;}
+.phone{background: url(http://img.rrmj.tv/static/down/phoneP01.png);width:420px;height:469px;margin-top:70px;float:left;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.pMain{float:right;overflow: hidden;margin-right:-76px;}
+.slogan{width:637px;height:188px;margin-top:102px;background: url(http://img.rrmj.tv/static/down/dslogan.png) no-repeat;}
+.slogan img{width:100%;display:block;}
+.download{padding-top:40px;}
+.button{font-size:24px;float:left;}
+.button a{width:248px;text-decoration: none;color:#555;height:68px;line-height:60px;display: block;margin-bottom:43px;}
+.android{background: url(http://img.rrmj.tv/static/down/androidBtn.png) no-repeat;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.ios{background: url(http://img.rrmj.tv/static/down/iphoneBtn.png) no-repeat;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.erwm{float:left;margin-left:45px;background: #fff;width:180px;height:180px;}
+.erwm p{font-size:18px;line-height: 18px;padding-top: 15px;width:120px;text-align: center;}
+.part02 h2{width:294px;height:103px;background: url(http://img.rrmj.tv/static/down/part02.png) no-repeat;position: absolute;top:140px;left:0;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.pic02{padding:109px 0 0 180px;}
+.pic02 img{display: block;}
+.part03 h2{width:393px;height:103px;background: url(http://img.rrmj.tv/static/down/part03.png) no-repeat;float:left;margin:140px 0 0 85px;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.pic03{padding:44px 0 0 0;float:left;}
+.pic03 img{display: block;}
+.part04 h2{width:294px;height:102px;background: url(http://img.rrmj.tv/static/down/part04.png) no-repeat;position: absolute;top:140px;left:0;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.pic04{padding:236px 0 0 145px;}
+.pic04 img{display: block;}
+.part05{height:500px;overflow: hidden;}
+.service{width:470px;margin: 0 auto;}
+.part05 h2{width:454px;height:81px;background: url(http://img.rrmj.tv/static/down/part05.png) no-repeat;margin:65px auto;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;}
+.part05{font-size:16px;}
+span.gary{color:#999;padding-right:15px;}
+.service ul{float:left;}
+.service ul li{line-height: 50px;letter-spacing: 2px;}
+.service ul li i{width:10px;height:10px;background: url(http://img.rrmj.tv/static/down/dot.png) no-repeat 0 center;background-size:contain;-webkit-background-size:contain;-moz-background-size:contain;-ms-background-size:contain;float:left;vertical-align: middle;margin-top:18px;}
+.service ul li span{padding-left:14px;}
+.ma{width:140px;height:140px;background-color: #fff;}
+.ma img{width:100%}
+.service .wechat{float: left;padding-left:95px;}
+.service .wechat p{width:140px;text-align: center;line-height:30px;}
+.footer{padding-top:60px;}
+.footer p{width:100%;text-align: center;color:#00addf;line-height: 30px;}

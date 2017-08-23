@@ -1,0 +1,154 @@
+<?php    function show_report_deliver($rpt){     ?>
+                   <div class="wrap">
+            <div class="nav">
+				  <script src="login_files/jquery.js"></script>
+               <script type="text/javascript" src="editor/wangEditor.js"></script>
+                <ul class="cc">
+                    <li class="current">
+                        <a href="index.php?goto=comm&a=single">沟通记录</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="tbl" style="padding:15px;">
+            </div>
+            <form method="post" class="J_ajaxForm" action="#" style="background:#eee;" onSubmit="return false;">
+                <!--div class="h_a" style="background:#fff;height:40px;border: 3px solid;margin-bottom:10px;">
+                	<h3>订户订阅列表</h3>
+                </div-->
+                <div class="table_full">
+									
+					<script type='text/javascript'>
+					function CuteWebUI_AjaxUploader_OnTaskComplete(task)
+					{
+						var div=document.createElement("DIV");
+						var link=document.createElement("A");
+						link.setAttribute("href","attach/"+task.FileName);
+						link.innerHTML="文件上传成功:  attach/"+task.FileName;
+						link.target="_blank";
+						div.appendChild(link);
+						document.getElementById("tbl").appendChild(div);
+						editor2.txt.append("<a href='attach/"+task.FileName+"'>文件-"+task.FileName+"</a>");
+					}
+					</script>
+
+					<table border="0" width="100%" cellpadding="0" cellspacing="0">
+					    <colgroup span="2">
+						    <col align="left" width="20%"/>
+						  	<col align="left" />
+						</colgroup>
+						<tbody>
+						<tr>
+							<th>
+								<div class="" style="padding:5px">
+								   客户沟通记录:<?php echo $rpt->id?> <br><br>
+									状态:<?php echo $rpt->state?> <br>
+									产品:<?php echo $rpt->unit?> <br>
+									<?php 
+									$ssj = new CustomInfo();
+									$ssj->get_id($rpt->custom);
+									echo '<input name="repo" id="repoId" type="hidden"class="input"value="'.$rpt->report.'" /> 客户 - '.$ssj->na;
+									echo "<br>";
+									date_default_timezone_set('PRC'); echo date("Y-m-d H:i:s",$rpt->dates);
+									echo "<br><a href='data/sa".$rpt->dates.".txt'>查看文本</a>";
+									?>
+									</div>
+									<div style="padding:6px;" id="showPanel">
+									
+									</div>
+							</th>
+							<th>
+								<div name="blob" id="edti" style="height:100%">
+									<?php
+									 	// get a blob from rpt
+									 	$rid = $rpt->report; // 失败请求恢复
+										$sm = new FileBean();
+										$q = $sm->selectBlob($rid);
+										//echo json_encode($q);
+										//$data=$q['data'];
+										$data = file_get_contents("data/sa".$rpt->dates.".txt");
+										if(is_array($q)){
+											// OK 
+											echo $data;
+										}else{
+											echo "<p>出现读取错误，找不到指定的Report</p>";
+											echo "<p>".base64_encode(json_encode($q))."</p>";
+											echo "<p>".base64_encode(json_encode($sm))."</p>";
+											echo "<p>".base64_encode(json_encode($rpt))."</p>";
+										}
+									?>
+								</div>
+							</th>
+						</tr>
+						</tbody>
+					</table>
+					<script src="editor/purge.js"></script>
+				   <script>
+					function startEdit(){
+						var E = window.wangEditor;
+						var editor2 = new E('#edti');
+						editor2.customConfig.uploadImgServer = 'index.php?cast=picup';
+						editor2.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
+						editor2.create();
+						$("#btnsub").css("display","");
+						$("#btnsta").css("display","none");
+					}
+					   
+					function checkNewLines(ab){
+						//checkNewLines
+						var fd = new FormData();
+						fd.append("info",ab);
+						$.ajax({
+						  url: "index.php?cast=react_det&repo="+$("#repoId").val(),
+						  type: "POST",
+						  data:fd,
+						  processData: false,  // 不处理数据
+						  contentType: false   // 不设置内容类型
+						}).done(function(a){
+							
+						});
+					}					  
+					   
+					var notEdit = true;
+					function regainAll(){
+						if(notEdit) return;
+						var formData = new FormData();
+						var blob = new Blob([editor2.txt.html()], { type: "text/xml"});
+						formData.append("imp",blob);
+						
+						$.ajax({
+						  url: "index.php?cast=recommu&cusId="+$("#cusId").val(),
+						  type: "POST",
+						  data: formData,
+						  processData: false,  // 不处理数据
+						  contentType: false   // 不设置内容类型
+						}).done(function(av){
+							//av 是 返回的成功信息
+							try{
+								var obh = JSON.parse(av);
+								if(obh[0] == "success"){
+									oj = obh[1];
+									$("#showPanel").html("成功保存<br>记录代码："+oj[0]);
+								}else{
+									alert("服务器返回错误，请您重试: \n" + obh[1]);		
+								}
+							}catch(e){
+								alert("分析结果失败，请您重试 \n " + av);		
+							}
+						}).fail(function(){alert("网络传输失败，请您重试 \n");	});
+						return false;
+					}
+					</script>
+                </div>
+                
+                <div class="btn_wrap" style="bottom:100px; position:inherit;">
+                    <div class="btn_wrap_pd">
+                       	 <button id="btnsta" class="btn" onClick="startEdit()">开始编辑</button>
+                        <button id="btnsub" class="btn btn_submit mr10 J_ajax_submit_btn" type="submit" onclick="regainAll();" style="display:none;">提交</button>
+                        </div>
+                </div>
+            </form>
+        </div>
+        
+       <?php
+      }
+?>

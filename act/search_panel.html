@@ -1,0 +1,199 @@
+
+	<div class="wrap">
+	<!-- start -->
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="#">预约搜索</a></li>
+		</ul>
+	</div>
+	<style>/*
+===================
+属性转移 如：角色权限添加删除
+===================
+*/
+.shift{}
+.shift select{
+	width:160px;
+	padding:5px;
+}
+.shift_operate{
+	padding:70px 10px 0;
+}
+.shift h4{
+	margin-bottom:5px;
+	font-size:12px;
+}
+.shift .btn{
+	font-family:Simsun;
+}
+.shift .select_div{
+	border:1px solid #ccc;
+	background:#fff;
+	height:180px;
+	overflow-y:auto;
+	width:158px;
+	float:left;
+	line-height:25px;
+	text-indent:10px;
+	padding-bottom:5px;
+}
+.shift .select_div dl{
+	padding:5px 5px 0;
+}
+.shift .select_div dl dd{
+	display:none;
+}
+.shift .select_div dl.current dd{
+	display:block;
+}
+.shift .select_div dl dt{
+	font-weight:700;
+	background:#e9e9e9 url(../images/admin/content/down.png) 115px center no-repeat;
+}
+.shift .select_div dl.current dt{
+	background:#e9e9e9 url(../images/admin/content/up.png) 115px center no-repeat;
+}
+.shift .select_div a{
+	display:block;
+	color:#666;
+}
+.shift .select_div a:hover,
+.shift .select_div a.current{
+	display:block;
+	background:#e6e6e6;
+	text-decoration:none;
+}
+
+/*
+===================
+大功能提示说明
+===================
+*/
+.prompt_text{
+	padding:10px;
+	color:#666;
+	margin-bottom:10px;
+}
+.prompt_text:hover{
+	color:#000;
+}
+.prompt_text ol,
+.prompt_text ul{
+	padding:0 0 5px 2em;
+	margin:0;
+	line-height:1.5;
+}
+.prompt_text ul li{
+	list-style: disc outside;
+}
+/*
+===================
+页面级提示
+===================
+*/
+#error_tips{
+	border:1px solid #d4d4d4;
+	background:#fff;
+	-webkit-box-shadow: #ccc 0 1px 5px;
+	-moz-box-shadow: #ccc 0 1px 5px;
+	-o-box-shadow:#ccc 0 1px 5px;
+	box-shadow: #ccc 0 1px 5px;
+	filter: progid: DXImageTransform.Microsoft.Shadow(Strength=3, Direction=180, Color='#ccc');
+	width:500px;
+	margin:50px auto;
+}
+#error_tips h2{
+	font:bold 14px/40px Arial;
+	height:40px;
+	padding:0 20px;
+	color:#666;
+}
+.error_cont{
+	padding:20px 20px 30px 80px;
+	background:url(../images/admin/tips/light.png) 20px 20px no-repeat;
+	line-height:1.8;
+}
+.error_return{
+	padding:10px 0 0 0;
+}
+</style>
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ul>
+			<li>默认在这里您可以查询现有假条信息</li>
+			<li>您可以查询到信息后对假条进行审核、取消审核、拒绝、查询相关教师等操作</li>
+		</ul>
+	</div>
+	
+	<form method="post" class="J_ajaxForm" action="index.php?cast=inquire" data-role="list">
+		<div class="h_a">预约搜索</div>
+		<div class="table_full">
+			<table width="100%">
+				<colgroup><col class="th">
+				<col width="400">
+				<col>
+				</colgroup><tbody>
+					<tr>
+					<th>年级选择</th>
+					<td>
+						<ul class="single_list cc">
+							<li>
+								<span class="mr20">
+									<label>
+										<select name="class" class="select_5">
+					<option value="1">闲鱼</option>
+                    					<option value="8">所有</option>
+					</select></label></span> 
+								</li>
+						</ul>
+					</td>
+					<td><div class="fun_tips"></div></td>
+				</tr>
+				
+				<tr>
+					<th>时间选择</th>
+					<td>
+						<ul class="single_list cc">
+							<li>
+								<span class="mr20">
+									<label><select name="time" class="select_5">
+						<?php 
+							if(isset($_REQUEST['goto']) && $_REQUEST['goto'] == "elder"){
+								// 是长时间
+								?>
+								<option value="11">近1个月</option>
+								<option value="12">近1个月</option>
+								<option value="19">近1年</option>
+								<?php
+							}else{
+								?>
+						<option value="1">今明两天</option>
+						<option value="4">本星期</option>
+						<option value="2">今天</option>
+						<option value="50">前后3天</option>
+						<?php
+							}
+						?>
+						</select></label></span> 
+								</li>
+								<?php
+								
+								?>
+						</ul>
+					</td>
+					<td><div class="fun_tips"></div></td>
+				</tr>
+			</tbody></table>
+			</div>
+			<div class="">
+				<div class="btn_wrap_pd">
+					<button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+				</div>
+			</div>
+	<?php		if(isset($_REQUEST['goto']) && $_REQUEST['goto'] == "elder"){ 		?>
+				<input type="hidden" name="pls" value="elder">
+			<?php 			} 				?>	
+			<input type="hidden" name="crlf_token" value="c8d5411f80a9381e"></form>
+	
+	</div>
+	

@@ -1,0 +1,27 @@
+<p>开学 8月16号- 提前返校</p><p><br></p><p>暑假</p><p>下学期头几节课 -</p><h1>显示TFT -- （库） &nbsp;</h1><p>显示文字 - &nbsp;超声波测试仪</p><p><br></p><h1>4轴手臂 、 &nbsp;舵机控制板</h1><p>Wire / I2C 控制 &nbsp;---- &nbsp;板子地址</p><p>
+<br><h1>蓝牙</h1><div><!--StartFragment--><!--EndFragment--></div></p><p>电脑 / 手机 控制 赛事&nbsp;</p><p><br></p><h1>WIFI</h1><p>IoT 物联网 --&nbsp;</p><p><br></p><h1>MP3</h1><p><br></p><p><br></p><p>----------------------</p><p>TFT</p><p>
+<br>		初始化 UTFT(模型代码,  针脚RS,  针脚WR, 针脚CS,  针脚RST,  针脚SER=0);
+<br>		初始化方向  InitLCD(方向);  // PORTRAIT / LANDSCAPE
+<br>		清屏 - 黑色  clrScr();
+<br>		绘制点 -  drawPixel( x,  y);
+<br>		绘制直线   drawLine( x1,  y1,  x2,  y2);  
+<br>		填满屏幕（颜色）  fillScr(r, g,  b); //均为0-255
+<br>		画空心矩形  drawRect( x1,  y1,  x2,  y2);
+<br>		画空心圆角矩形  drawRoundRect( x1,  y1,  x2,  y2);
+<br>		填充矩形   fillRect( x1,  y1,  x2,  y2);
+<br>		填充圆角矩形  fillRoundRect( x1,  y1,  x2,  y2);
+<br>		画空心圆   drawCircle( x,  y,  半径);
+<br>		填充圆  fillCircle( x,  y,  半径);
+<br>		设置绘制颜色  setColor(r, g, b); // 均为 0-255
+<br>		设置背景颜色  setBackColor(byte r, byte g, byte b);
+<br>		绘制文字  print(文字,  x,  y);  //x 可以是 LEFT 左 / CENTER 中 / RIGHT 右
+<br>		绘制整数   printNumI(long num,  x,  y,  length=0, char filler=' ');
+<br>		绘制浮点数   printNumF(double num, byte dec,  x,  y, char divider='.',  length=0, char filler=' ');
+<br>		设置字体  setFont(u8_t* font);
+<br>		绘制图像(图片)  drawBitmap( x,  y,  sx,  sy, bitmapdatatype data,  比例;
+<br>		绘制图像(图片)  drawBitmap( x,  y,  sx,  sy, bitmapdatatype data,  deg,  rox,  roy);
+<br>		关闭屏幕  lcdOff();
+<br>		打开屏幕  lcdOn();
+<br>		设置背景强度  setContrast(0-255); 
+<br>		获取屏幕宽度 getDisplayXSize();
+<br>		获取屏幕高度  getDisplayYSize();</p>

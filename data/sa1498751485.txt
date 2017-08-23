@@ -1,0 +1,33 @@
+<p><font color="#c24f4a">抱歉啊这两天有点急事，后期从小填块中读取
+<br>22:38:37
+</font><br>Jason 2017/6/29 22:38:37
+<br>哦哦
+<br>
+<br><font color="#c24f4a">闲鱼生日礼盒 全部设计 2017/6/29 22:40:14
+<br>还有一个想法，呃..   http://m.zcool.com.cn/article/ZNDU2MDg=.html 
+<br>
+<br>   Inkling草稿笔的精度很高，但在这个儿童玩具中，只达到很低的精度即可，就是很简单的线条，不知道能不能用这个原理实现呢？
+</font><br>22:50:51
+<br>Jason 2017/6/29 22:50:51
+<br>可以的可以的
+<br>
+<br>Jason 2017/6/29 22:51:32
+<br>这个就是需要一定后期对距离的优化
+<br>
+<br><font color="#c24f4a">闲鱼生日礼盒 全部设计 2017/6/29 22:51:49
+<br>哦哦，那这个用什么传感器？
+<br>
+<br>闲鱼生日礼盒 全部设计 2017/6/29 22:52:11
+<br>这一套下来大概怎么收费？
+</font><br>23:38:59
+<br>Jason 2017/6/29 23:38:59
+<br>得用红外、超声、控制这样
+<br>
+<br>Jason 2017/6/29 23:39:15
+<br>估计总体应该不超过100元
+<br>
+<br>Jason 2017/6/29 23:39:39
+<br>可能能控制在50以内
+<br>
+<br>Jason 2017/6/29 23:40:10
+<br>主要是看这个笔和一些外壳之类的价格了</p><p><br></p><p><!--StartFragment--><b><font color="#7b5ba1">电子的部分就是Arduino + 连接线（内外） + 红外 + 超声<!--EndFragment-->&nbsp; + &nbsp;（笔 &nbsp;+ &nbsp;电池） + 外壳 + 按钮？</font></b><br></p><p><font color="#7b5ba1"><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;18 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 15 &nbsp; &nbsp; &nbsp; 6 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1</b></font></p><p><font color="#7b5ba1"><b>= 18+1+15+6+4+5+1 =&nbsp;</b></font><span style="font-style: inherit;">50</span></p>

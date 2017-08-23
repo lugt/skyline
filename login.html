@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<title>预约通 - 登录</title>
+		<meta name="robots" content="noindex,nofollow">
+		<link href="./login_files/admin_login.css" rel="stylesheet">
+		<script>
+			if (window.parent !== window.self) {
+					document.write = '';
+					window.parent.location.href = window.self.location.href;
+					setTimeout(function () {
+							document.body.innerHTML = '';
+					}, 0);
+			}
+		</script><style type="text/css"></style>
+	</head>
+<body>
+	<div class="wrap">
+		<h1><a href="#">预约通系统登录</a></h1>
+		<form action="auth/quick.php" method="post">
+			<div class="login">
+				<ul>
+					<li>
+						<input class="input" id="login" required="" name="login" type="text" placeholder="帐号名" title="帐号名">
+					</li>
+					<li>
+						<input class="input" id="passwd" type="password" required="" name="passwd" placeholder="密码" title="密码">
+					</li>
+				</ul>
+				<input type="submit" name="submit" class="btn" value="登录">
+			</div>
+		</form>
+	</div>
+
+<script>
+var GV = {
+	JS_ROOT : "http://niimei.com/wind/res/js/dev/",																									//js目录
+	JS_VERSION : "20130227",																										//js版本号
+	TOKEN : '880da8cd1bbe1b79'	//token ajax全局
+};
+</script>
+<script src="./login_files/wind.js"></script>
+<script src="./login_files/jquery.js"></script></body></html>

@@ -1,0 +1,110 @@
+<?php
+
+function show_custom_result($s){
+?>
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://niimei.com/wind/admin.php?m=bbs&c=article&a=searchthread -->
+<html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<link href="./home_files/admin_style.css" rel="stylesheet">
+<script>
+var GV = {
+	JS_ROOT : "./home_files/",																									//js目录
+	JS_VERSION : "20130227",																										//js版本号
+	TOKEN : '84d90defd6ee4d83',	//token ajax全局
+	REGION_CONFIG : {},
+	SCHOOL_CONFIG : {},
+	URL : {
+		LOGIN : '',																													//后台登录地址
+		IMAGE_RES: './home_files/',																										//图片目录
+		REGION : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=area',					//地区
+		SCHOOL : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=school'				//学校
+	}
+};
+</script>
+<script src="./home_files/wind.js"></script>
+<script src="./home_files/jquery.js"></script>
+<script type="text/javascript" src="./home_files/dialog.js"></script>
+<!--script type="text/javascript" src="./home_files/ajaxForm.js"></script-->
+<script type="text/javascript" src="./home_files/datePicker.js"></script>
+<!--script type="text/javascript" src="./home_files/draggable.js"></script-->
+<link rel="stylesheet" href="./act/search_result_files/style.css">
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="#">现有预约信息</a></li>
+			<li></li>
+		</ul>
+	</div>
+	<input type="hidden" name="csrf_token" value="84d90defd6ee4d83"></form>
+	<div class="J_ajaxForm">
+						<div class="table_list">
+			<table width="100%">
+				<colgroup>
+					<col width="1*">
+					<col width="3*">
+					<col width="3*"> 
+					<col width="4*">
+					<col width="1*">
+					<col width="4*">
+				</colgroup>
+				<thead>
+					<tr>
+						<!--<label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x">全选</label>-->
+						<td>详情</td>
+						<td>ID</td>
+						<td>姓名</td>
+						<td>建交</td>
+						<td>联系</td>
+						<td>余额</td>
+						<td>关系</td>
+						<td>沟通</td>
+						<td>历史沟通</td>
+					</tr>
+				</thead>
+					<tbody>
+				<?php
+				foreach($s as $now){
+				?>
+				<tr height="50">
+					<!--<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="tids[]" value="8"></td>-->
+					<td><a href="index.php?cast=cusdetail&cusId=<?php echo $now->id;?>">查看</a></td>
+					<td><?php echo $now->id;?></td>					
+					<td><?php echo $now->na; ?></td>
+					<td><?php date_default_timezone_set('PRC'); echo date("Y-m-d",$now->ettime);?></td>
+					<td><?php echo $now->con;?></td>
+					<td><?php echo $now->bal;?></td>
+					<td><?php echo $now->rel;?> </td>
+					<td><a href="index.php?goto=comm&cusId=<?php echo $now->id;?>">沟通</a></td>
+					<td><?php echo "<a href='index.php?cast=findrepo&cusId=".$now->id."'>"?>查看</a></td》
+				</tr>
+				<?php
+				}
+				?>
+							</tbody></table>
+			<div class="p10">
+							</div>
+		</div>
+						<div class="">
+			<div class="btn_wrap_pd">
+				<div class="select_pages">
+					<a href="#">20</a><span>|</span>
+					<a href="#">50</a><span>|</span>
+					<a href="#">100</a>
+				</div>
+				<label class="mr20"><input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y">全选</label>
+				<button class="btn J_ajax_submit_btn" onclick="history.go(-1)">返回</button>
+				<a class="btn btn_submit J_ajax_submit_btn" data-action="" href='<?php echo "index.php?".http_build_query($_REQUEST);?>';">刷新</a>
+			</div>
+		</div>
+	</form>
+</div>		
+</body></html>
+	
+<?php
+}
+?>
